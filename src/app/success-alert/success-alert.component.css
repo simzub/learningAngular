@@ -1,5 +1,7 @@
 p {
-  padding: 20px;
-  background-color: palegreen;
-  border: 1px solid green;
+  padding: 10px;
+}
+
+.online {
+  color: white;
 }

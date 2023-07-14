@@ -9,6 +9,10 @@ export class SuccessAlertComponent implements OnInit {
   serverId: number = 10;
   serverStatus: string = 'offline';
   serverCreationStatus = 'No server was created!';
+  serverName = 'TestServer';
+  serverCreated = false;
+
+  servers = ['test1', 'test2'];
 
   allowNewServer = false;
 
@@ -17,6 +21,8 @@ export class SuccessAlertComponent implements OnInit {
   }
 
   constructor() {
+    this.serverStatus = Math.random() > 0.5 ? 'online' : 'offline';
+
     setTimeout(() => {
       this.allowNewServer = true;
     }, 2000);
@@ -25,6 +31,16 @@ export class SuccessAlertComponent implements OnInit {
   ngOnInit() {}
 
   onCreateServer() {
-    this.serverCreationStatus = 'Server was created!';
+    this.serverCreated = true;
+    this.servers.push(this.serverName);
+    this.serverCreationStatus =
+      'Server was created! Name is ' + this.serverName;
+  }
+  onUpdateServerName(event: Event) {
+    this.serverName = (<HTMLInputElement>event.target).value;
+  }
+
+  getColor() {
+    return this.serverStatus === 'online' ? 'green' : 'red';
   }
 }
