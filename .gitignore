@@ -43,4 +43,5 @@ Thumbs.db
 
 
 # Custom entries
-src/app/config.ts
+src/environments
+
