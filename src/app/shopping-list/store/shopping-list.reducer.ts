@@ -2,10 +2,6 @@ import { createReducer, on } from '@ngrx/store';
 import { Ingredient } from '../../shared/ingredient.model';
 import * as ShoppingListActions from './shopping-list.actions';
 
-export interface AppState {
-  shoppingList: State;
-}
-
 export interface State {
   ingredients: Ingredient[];
   editedIngredient: Ingredient;
@@ -44,7 +40,7 @@ export const shoppingListReducer = createReducer(
       editedIngredient: null,
     };
   }),
-  on(ShoppingListActions.DeleteIngredient, (state, action) => {
+  on(ShoppingListActions.DeleteIngredient, (state, _) => {
     return {
       ...state,
       ingredients: state.ingredients.filter((ig, igIndex) => {
@@ -61,7 +57,7 @@ export const shoppingListReducer = createReducer(
       editedIngredient: { ...state.ingredients[action.index] },
     };
   }),
-  on(ShoppingListActions.StopEdit, (state, action) => {
+  on(ShoppingListActions.StopEdit, (state, _) => {
     return {
       ...state,
       editedIngredient: null,
